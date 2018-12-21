@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{8DCEAD12-70FE-4094-8208-6B243835A214}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fahrzeugverwaltung/Klassen/Parkhausverwaltung.cs">
+    <Files>
+      <File FileName="Fahrzeugverwaltung/Program.cs" Line="32" Column="13" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Parkhaus.cs" Line="12" Column="30" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Parkplatz.cs" Line="35" Column="37" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Steuerberechnung.cs" Line="11" Column="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Parkhausverwaltung.cs" Line="11" Column="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Fahrzeugliste.cs" Line="8" Column="49" NotebookId="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Fahrzeug.cs" Line="19" Column="48" NotebookId="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/PKW.cs" Line="33" Column="1" NotebookId="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/LKW.cs" Line="18" Column="10" NotebookId="1" />
+      <File FileName="Fahrzeugverwaltung/Klassen/Motorrad.cs" Line="18" Column="40" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Fahrzeugverwaltung" expanded="True">
+            <Node name="Fahrzeugverwaltung" expanded="True">
+              <Node name="Klassen" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Fahrzeugverwaltung PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
