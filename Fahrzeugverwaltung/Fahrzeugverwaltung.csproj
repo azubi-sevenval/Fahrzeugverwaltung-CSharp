@@ -41,6 +41,8 @@
     <Compile Include="Klassen\Parkplatz.cs" />
     <Compile Include="Klassen\Parkhaus.cs" />
     <Compile Include="Klassen\Steuerberechnung.cs" />
+    <Compile Include="Klassen\Verwaltung.cs" />
+    <Compile Include="Klassen\Draw.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Klassen\" />

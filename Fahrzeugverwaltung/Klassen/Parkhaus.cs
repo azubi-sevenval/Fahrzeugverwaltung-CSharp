@@ -57,6 +57,7 @@ namespace Fahrzeugverwaltung.Klassen
             );
         }
 
+        // Listet die Parkplatzdaten für alle Fahrzeuge
         public void GetParkplatzInfo()
         {
             foreach(Parkplatz p in parkplatzListe)
@@ -65,6 +66,7 @@ namespace Fahrzeugverwaltung.Klassen
             }
         }
 
+        // Listet die Parkplatzdaten für ein bestimmtes Kennzeichen
         public void GetParkplatzInfo(string kennzeichen)
         {
             foreach(Parkplatz p in parkplatzListe)
@@ -83,6 +85,7 @@ namespace Fahrzeugverwaltung.Klassen
             }
         }
 
+        // Das Fahrzeug wird an der ersten verfügbaren Stelle geparkt
         public void SetParkplatz(Fahrzeug fahrzeug)
         {
             foreach (Parkplatz p in parkplatzListe)
@@ -97,8 +100,17 @@ namespace Fahrzeugverwaltung.Klassen
                     break;
                 }
             }
+
+            if (parkplatzListe.Any(p => fahrzeug.GetType().Name != p.Typ))
+            {
+                Console.WriteLine(
+                    "Ihr {0} konnte nicht geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {0}s bestimmt oder der Parkplatz ist bereits vergeben.",
+                    fahrzeug.GetType().Name
+                );
+            }
         }
 
+        // Das Fahrzeug wird an der angegebenen Parkplatznummer geparkt
         public void SetParkplatz(Fahrzeug fahrzeug, int id)
         {
             foreach(Parkplatz p in parkplatzListe)
@@ -110,7 +122,17 @@ namespace Fahrzeugverwaltung.Klassen
                         "Das Fahrzeug mit dem Kennzeichen {0} parkt nun am Stellplatz: {1}.",
                         fahrzeug.Kennzeichen, id
                     );
+                    break;
                 }
+            }
+
+            if(parkplatzListe.Any(p => fahrzeug.GetType().Name != p.Typ))
+            {
+                Console.WriteLine(
+                    "Ihr {0} konnte nicht am Stellplatz {1} geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {0}s bestimmt oder der Parkplazt ist bereits vergeben.",
+                    fahrzeug.GetType().Name,
+                    id
+                );
             }
         }
     }

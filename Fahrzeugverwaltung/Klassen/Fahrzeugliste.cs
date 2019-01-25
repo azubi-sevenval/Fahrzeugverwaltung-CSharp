@@ -85,13 +85,16 @@ namespace Fahrzeugverwaltung.Klassen
         {
             Console.WriteLine("PKWs:\n");
             GetPKW();
-            DrawLine();
+            //DrawLine();
+            Draw.Line("-");
             Console.WriteLine("\nLKWs:\n");
             GetLKW();
-            DrawLine();
+            //DrawLine();
+            Draw.Line("-");
             Console.WriteLine("\nMotorräder:\n");
             GetMotorrad();
-            DrawLine();
+            //DrawLine();
+            Draw.Line("-");
         }
 
         public List<Fahrzeug> GetList()
@@ -101,14 +104,6 @@ namespace Fahrzeugverwaltung.Klassen
             listRange.AddRange(lkws);
             listRange.AddRange(motorraeder);
             return listRange;
-        }
-
-        void DrawLine() {
-            int consoleWidth = Console.WindowWidth;
-            for (int i = 0; i < consoleWidth; i++) 
-            {
-                Console.Write("-");
-            }
         }
     }
 }
