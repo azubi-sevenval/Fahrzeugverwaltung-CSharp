@@ -5,6 +5,7 @@ namespace Fahrzeugverwaltung.Klassen
     {
         static int count;
 
+        // Berechnung der Steuerschuld für alle Fahrzeuge
         public static void CalcSteuerschuld(Fahrzeugliste fl)
         {
             double result = 0;
@@ -33,6 +34,7 @@ namespace Fahrzeugverwaltung.Klassen
             );
         }
 
+        // Berechnung der Steuerschuld (Eingabe KFZ-Kennzeichen)
         public static void CalcSteuerschuld(Fahrzeugliste fl, string kennzeichen)
         {
             double result = 0;

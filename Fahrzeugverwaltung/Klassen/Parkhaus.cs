@@ -12,25 +12,25 @@ namespace Fahrzeugverwaltung.Klassen
             Straße = _straße;
         }
 
+        // Ein Parkhaus besteht aus vielen Parkplätzen
         List<Parkplatz> parkplatzListe = new List<Parkplatz>();
 
         string Ort { get; set; }
         string PLZ { get; set; }
         string Straße { get; set; }
 
+        // Fügt dem Parkhaus ein Parkplatz hinzu
         public void AddParkplatz(Parkplatz parkplatz)
         {
             if(parkplatzListe.Any(p => parkplatz.Id == p.Id))
             {
-                Console.WriteLine(
-                    "Die Parkplatz-ID ({0}) wird bereits verwendet.",
-                    parkplatz.Id
-                );
+                Notification.ErrorMessage($"Die Parkplatz-ID ({parkplatz.Id}) wird bereits verwendet.");
             } else {
                 parkplatzListe.Add(parkplatz);
             }
         }
 
+        // Entfernt dem Parkhaus ein Parkplatz
         public void RemoveParkplatz(int id)
         {
             foreach(Parkplatz p in parkplatzListe.ToList())
@@ -38,14 +38,12 @@ namespace Fahrzeugverwaltung.Klassen
                 if(p.Id == id)
                 {
                     parkplatzListe.Remove(p);
-                    Console.WriteLine(
-                        "Der Parkplatz mit der ID {0} wurde erfolgreich entfernt.",
-                        p.Id
-                    );
+                    Notification.SuccessMessage($"Der Parkplatz mit der ID {p.Id} wurde erfolgreich entfernt.");
                 }
             }
         }
 
+        // Listet die Parkhaus-Adresse
         public void GetParkhausInfo()
         {
             Console.WriteLine(
@@ -73,10 +71,7 @@ namespace Fahrzeugverwaltung.Klassen
             {
                 if(p.Fahrzeug != null && p.Fahrzeug.Kennzeichen.Equals(kennzeichen))
                 {
-                    Console.WriteLine(
-                        "Für das Kennzeichen {0} wurden folgende Daten gefunden:\n",
-                        kennzeichen
-                    );
+                    Notification.SuccessMessage($"Für das Kennzeichen {kennzeichen} wurden folgende Daten gefunden:\n");
                     GetParkhausInfo();
                     p.GetInfos();
                     Console.WriteLine("--- Fahrzeugdaten ---");
@@ -86,54 +81,46 @@ namespace Fahrzeugverwaltung.Klassen
         }
 
         // Das Fahrzeug wird an der ersten verfügbaren Stelle geparkt
-        public void SetParkplatz(Fahrzeug fahrzeug)
+        public bool SetParkplatz(Fahrzeug fahrzeug)
         {
             foreach (Parkplatz p in parkplatzListe)
             {
                 if (fahrzeug.GetType().Name == p.Typ && !p.isOccupied)
                 {
                     p.SetFahrzeug(fahrzeug);
-                    Console.WriteLine(
-                        "Das Fahrzeug mit dem Kennzeichen {0} parkt nun am Stellplatz: {1}.", 
-                        fahrzeug.Kennzeichen, p.Id
-                    );
-                    break;
+                    Notification.SuccessMessage($"Das Fahrzeug mit dem Kennzeichen {fahrzeug.Kennzeichen} parkt nun am Stellplatz: {p.Id}.\n");
+                    return true;
                 }
             }
 
             if (parkplatzListe.Any(p => fahrzeug.GetType().Name != p.Typ))
             {
                 Console.WriteLine(
-                    "Ihr {0} konnte nicht geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {0}s bestimmt oder der Parkplatz ist bereits vergeben.",
+                    "Ihr {0} konnte nicht geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {0}s bestimmt oder der Parkplatz ist bereits vergeben.\n",
                     fahrzeug.GetType().Name
                 );
             }
+            return false;
         }
 
         // Das Fahrzeug wird an der angegebenen Parkplatznummer geparkt
-        public void SetParkplatz(Fahrzeug fahrzeug, int id)
+        public bool SetParkplatz(Fahrzeug fahrzeug, int id)
         {
-            foreach(Parkplatz p in parkplatzListe)
+            foreach (Parkplatz p in parkplatzListe)
             {
-                if(fahrzeug.GetType().Name == p.Typ && !p.isOccupied && p.Id == id)
+                if (fahrzeug.GetType().Name == p.Typ && !p.isOccupied && p.Id == id)
                 {
                     p.SetFahrzeug(fahrzeug);
-                    Console.WriteLine(
-                        "Das Fahrzeug mit dem Kennzeichen {0} parkt nun am Stellplatz: {1}.",
-                        fahrzeug.Kennzeichen, id
-                    );
-                    break;
+                    Notification.SuccessMessage($"Das Fahrzeug mit dem Kennzeichen {fahrzeug.Kennzeichen} parkt nun am Stellplatz: {id}.\n");
+                    return true;
                 }
             }
 
-            if(parkplatzListe.Any(p => fahrzeug.GetType().Name != p.Typ))
+            if (parkplatzListe.Any(p => fahrzeug.GetType().Name != p.Typ))
             {
-                Console.WriteLine(
-                    "Ihr {0} konnte nicht am Stellplatz {1} geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {0}s bestimmt oder der Parkplazt ist bereits vergeben.",
-                    fahrzeug.GetType().Name,
-                    id
-                );
+                Notification.ErrorMessage($"Ihr {fahrzeug.GetType().Name} konnte nicht am Stellplatz {id} geparkt werden. Möglicherweise ist dieser Parkplatz nicht für {fahrzeug.GetType().Name}s bestimmt oder der Parkplatz ist bereits vergeben.\n");
             }
+            return false;
         }
     }
 }

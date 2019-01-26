@@ -12,12 +12,5 @@ namespace Fahrzeugverwaltung.Klassen
             }
             Console.WriteLine("\n");
         }
-
-        //public static void ErrorMessage(string msg)
-        //{
-        //    Console.ForegroundColor = ConsoleColor.Red;
-        //    Console.WriteLine(msg);
-        //    Console.ResetColor();
-        //}
     }
 }

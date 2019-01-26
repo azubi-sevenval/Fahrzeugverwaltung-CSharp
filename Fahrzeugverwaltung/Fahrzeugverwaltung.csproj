@@ -43,6 +43,7 @@
     <Compile Include="Klassen\Steuerberechnung.cs" />
     <Compile Include="Klassen\Verwaltung.cs" />
     <Compile Include="Klassen\Draw.cs" />
+    <Compile Include="Klassen\Notification.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Klassen\" />

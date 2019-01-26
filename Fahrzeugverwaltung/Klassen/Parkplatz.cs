@@ -36,7 +36,7 @@ namespace Fahrzeugverwaltung.Klassen
                 Id, isOccupied, Typ
             );
 
-            if(isOccupied)
+            if (isOccupied)
             {
                 Console.Write(
                     "Fahrzeug: {0}\n",
