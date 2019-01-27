@@ -95,9 +95,11 @@ namespace Fahrzeugverwaltung.Klassen
                         "3: Steuerschuld-Berechnung\n"
                     );
                     Draw.Line("-");
+                    Console.WriteLine("<-- Fahrzeugverwaltung verlassen (9)\n");
+                    Draw.Line("-");
 
                     string userInput = Console.ReadLine();
-                    string[] allowedInput = { "1", "2", "3" };
+                    string[] allowedInput = { "1", "2", "3", "9" };
                     if (allowedInput.Contains(userInput))
                     {
                         switch (userInput)
@@ -110,6 +112,13 @@ namespace Fahrzeugverwaltung.Klassen
                                 break;
                             case "3":
                                 SteuerschuldMenu();
+                                break;
+                            case "9":
+                                Console.Clear();
+                                Notification.SuccessMessage(
+                                    "Die Fahrzeugverwaltung wurde erfolgreich beendet!\n"
+                                );
+                                Environment.Exit(0);
                                 break;
                         }
                         isActive = false;
@@ -297,6 +306,7 @@ namespace Fahrzeugverwaltung.Klassen
                         "3: Ausgabe der Stellplatz-Daten nach Kennzeichen\n" +
                         "4: Anlegen und Zuweisen eines Fahrzeugs für ein Parkhaus-Stellplatz\n"
                     );
+                    Draw.Line("-");
                     Console.WriteLine("<-- Zurück (9)\n");
                     Draw.Line("-");
 

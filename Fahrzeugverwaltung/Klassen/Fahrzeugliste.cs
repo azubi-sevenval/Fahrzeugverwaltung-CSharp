@@ -32,15 +32,20 @@ namespace Fahrzeugverwaltung.Klassen
             }
         }
 
-        public void GetPKW(string kennzeichen)
+        public bool GetPKW(string kennzeichen)
         {
             foreach (PKW p in pkws)
             {
                 if (p.Kennzeichen.Equals(kennzeichen))
                 {
+                    Notification.SuccessMessage("Es wurde ein PKW gefunden!\n");
                     p.GetInfos();
-                }
+                    return true;
+                } 
             }
+
+            Notification.ErrorMessage("Das Kennzeichen wurde nicht gefunden.\n");
+            return false;
         }
 
         public void GetMotorrad()
@@ -51,15 +56,20 @@ namespace Fahrzeugverwaltung.Klassen
             }
         }
 
-        public void GetMotorrad(string kennzeichen)
+        public bool GetMotorrad(string kennzeichen)
         {
             foreach (Motorrad m in motorraeder)
             {
                 if (m.Kennzeichen.Equals(kennzeichen))
                 {
+                    Notification.SuccessMessage("Es wurde ein Motorrad gefunden!\n");
                     m.GetInfos();
+                    return true;
                 }
             }
+
+            Notification.ErrorMessage("Das Kennzeichen wurde nicht gefunden.\n");
+            return false;
         }
 
         public void GetLKW()
@@ -70,15 +80,20 @@ namespace Fahrzeugverwaltung.Klassen
             };
         }
 
-        public void GetLKW(string kennzeichen)
+        public bool GetLKW(string kennzeichen)
         {
             foreach (LKW l in lkws)
             {
                 if (l.Kennzeichen.Equals(kennzeichen))
                 {
+                    Notification.SuccessMessage("Es wurde ein LKW gefunden!\n");
                     l.GetInfos();
+                    return true;
                 }
             }
+
+            Notification.ErrorMessage("Das Kennzeichen wurde nicht gefunden.\n");
+            return false;
         }
 
         public void GetAll()

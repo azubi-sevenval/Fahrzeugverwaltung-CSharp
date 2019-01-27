@@ -35,7 +35,7 @@ namespace Fahrzeugverwaltung.Klassen
         }
 
         // Berechnung der Steuerschuld (Eingabe KFZ-Kennzeichen)
-        public static void CalcSteuerschuld(Fahrzeugliste fl, string kennzeichen)
+        public static bool CalcSteuerschuld(Fahrzeugliste fl, string kennzeichen)
         {
             double result = 0;
 
@@ -48,6 +48,7 @@ namespace Fahrzeugverwaltung.Klassen
                         "Bei dem Kennzeichen {0} handelt es sich um ein {1}.\nDie Steuerschuld beträgt: {2} Euro.\n",
                         kennzeichen, p.GetType().Name, result
                     );
+                    return true;
                 }
             }
 
@@ -60,6 +61,7 @@ namespace Fahrzeugverwaltung.Klassen
                         "Bei dem Kennzeichen {0} handelt es sich um ein {1}.\nDie Steuerschuld beträgt: {2} Euro.\n",
                         kennzeichen, m.GetType().Name, result
                     );
+                    return true;
                 }
             }
 
@@ -72,8 +74,12 @@ namespace Fahrzeugverwaltung.Klassen
                         "Bei dem Kennzeichen {0} handelt es sich um ein {1}.\nDie Steuerschuld beträgt: {2} Euro.\n",
                         kennzeichen, l.GetType().Name, result
                     );
+                    return true;
                 }
             }
+
+            Notification.ErrorMessage("Das Kennzeichen konnte nicht gefunden werden!\n");
+            return false;
         }
     }
 }

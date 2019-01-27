@@ -65,7 +65,7 @@ namespace Fahrzeugverwaltung.Klassen
         }
 
         // Listet die Parkplatzdaten für ein bestimmtes Kennzeichen
-        public void GetParkplatzInfo(string kennzeichen)
+        public bool GetParkplatzInfo(string kennzeichen)
         {
             foreach(Parkplatz p in parkplatzListe)
             {
@@ -76,8 +76,11 @@ namespace Fahrzeugverwaltung.Klassen
                     p.GetInfos();
                     Console.WriteLine("--- Fahrzeugdaten ---");
                     p.Fahrzeug.GetInfos();
+                    return true;
                 }
             }
+            Notification.ErrorMessage("Zu diesem Kennzeichen wurden keine Daten gefunden!\n");
+            return false;
         }
 
         // Das Fahrzeug wird an der ersten verfügbaren Stelle geparkt
